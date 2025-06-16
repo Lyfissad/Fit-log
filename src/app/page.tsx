@@ -4,7 +4,7 @@ import { IoMdAdd } from "react-icons/io";
 
 export default function Home(){
   return(
-    <div className="bg-grayBlack h-[49rem] w-full pt-5 text-text-pri">
+    <div className="bg-grayBlack h-screen w-full pt-5 text-text-pri">
             <div className="flex justify-end">
               <FaSearch className="size-7 mx-5"/>
             </div>

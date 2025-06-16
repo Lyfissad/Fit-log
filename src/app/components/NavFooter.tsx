@@ -14,7 +14,7 @@ export default function NavFooter(){
 
 
     return(
-        <footer>
+        <footer className="fixed bottom-0 left-0 w-full">
           <ul className="flex bg-[#1C1C1E] border-t border-[#2C2C2E] justify-center text-sm h-[4rem]">
             <li onClick={() => {setActiveTab("profile")}} className={`px-4 min-w-18 transition-all duration-250 ${activeTab === "profile"? "text-text-pri" : "text-text-sec"}`}>
               <Link href={"/profile"}>
