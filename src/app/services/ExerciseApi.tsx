@@ -1,22 +1,34 @@
 type Exercise = {
-    id : number;
-    name: string;
-    description: string;
-}
+  id: string;
+  name: string;
+  bodyPart: string;
+  target: string;
+  equipment: string;
+  gifUrl: string;
+};
+
 
 
 
 
 async function getExercises():Promise<Exercise[]>{
+    const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0';
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': process.env.RAPID_API_KEY || '',
+            'x-rapidapi-host': process.env.RAPID_API_HOST || ''
+        }
+    };
     try{
-         const res = await fetch("https://wger.de/api/v2/exercise/?language=2&limit=10")
+         const res = await fetch(url,options)
 
          if (!res.ok){
             throw new Error(`API error: ${res.status}`)
          }
 
         const data = await res.json()
-        return data?.results as Exercise[] 
+        return data as Exercise[] 
     }
     catch(err){
         console.log(`Fetch didn't work:`, err)
