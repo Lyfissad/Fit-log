@@ -2,9 +2,8 @@ import TemplateCards from "./TemplateCards";
 import getExercises from "../services/ExerciseApi";
 
 
-export default async function ExerciseTiles(){
+export default async function TemplateTiles(){
         const exer = await getExercises()
-        console.log(exer)
             const tiles = exer.map((item) => (
               <TemplateCards key = {item.id} id = {item.id} title = {item.name} target = {item.target} />
             ))
@@ -14,4 +13,4 @@ export default async function ExerciseTiles(){
             </div>
         )
 
-}
+}   

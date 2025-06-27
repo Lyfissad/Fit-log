@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NavFooter from "./components/NavFooter";
 import ExerciseProvider from "@/context/exerciseProvider";
+import NavFooter from "./components/NavFooter";
+
 
 export const metadata: Metadata = {
   title: "Fit Log - Train. Track. Transform.",
@@ -15,9 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
+      <body className="bg-grayBlack text-text-pri h-screen overflow-hidden relative">
         <ExerciseProvider>
-        {children}
+          <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
+           {children}
+        </div>
         <NavFooter />
         </ExerciseProvider>
       </body>

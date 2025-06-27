@@ -24,4 +24,4 @@ export default function ExerciseProvider({children}: {children: ReactNode}){
                         {children}
                 </exerciseContext.Provider>
         )
-}
+}       
