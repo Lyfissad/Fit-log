@@ -12,7 +12,7 @@ type Exercise = {
 
 
 async function getExercises():Promise<Exercise[]>{
-    const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0';
+    const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=20&offset=0';
     const options = {
         method: 'GET',
         headers: {

@@ -1,18 +1,15 @@
 import Link from "next/link"
-import { FaSearch } from "react-icons/fa";
+import Image from "next/image";
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import TemplateTiles from "./TemplateTiles";
 
 
 
-
 export default async function MobileHome(){
     return(
        <div>
-         <div className="flex justify-end overflow-x-hidden">
-              <FaSearch className="size-7 mx-5"/>
-            </div>
+            <Image src={"/fitlog_logo.png"} alt="logo" width={180} height={80} className="m-5"/>
             <h1 className="font-bold text-4xl p-5">Workouts</h1>
             <h3 className="text-text-sec px-5 text-xl">Quick Start</h3>
             <Link 
