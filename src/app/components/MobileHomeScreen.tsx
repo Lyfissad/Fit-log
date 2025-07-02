@@ -7,6 +7,7 @@ import TemplateTiles from "./TemplateTiles";
 
 
 export default async function MobileHome(){
+
     return(
        <div>
             <Image src={"/fitlog_logo.png"} alt="logo" width={180} height={80} className="m-5"/>

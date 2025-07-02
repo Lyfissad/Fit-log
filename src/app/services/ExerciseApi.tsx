@@ -1,4 +1,4 @@
-type Exercise = {
+export type Exercise = {
   id: string;
   name: string;
   bodyPart: string;
@@ -11,14 +11,16 @@ type Exercise = {
 
 
 
-async function getExercises():Promise<Exercise[]>{
-    const url = 'https://exercisedb.p.rapidapi.com/exercises?limit=20&offset=0';
+async function getExercises(offset = 0, limit = 10):Promise<Exercise[]>{
+    const url = `https://exercisedb.p.rapidapi.com/exercises?limit=${limit}&offset=${offset}`;
+    const headers = {
+        'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPID_API_KEY || '',
+        'x-rapidapi-host': process.env.NEXT_PUBLIC_RAPID_API_HOST || ''
+    }
     const options = {
         method: 'GET',
-        headers: {
-            'x-rapidapi-key': process.env.RAPID_API_KEY || '',
-            'x-rapidapi-host': process.env.RAPID_API_HOST || ''
-        }
+        headers: headers,    
+        cache: "no-store" as RequestCache
     };
     try{
          const res = await fetch(url,options)
