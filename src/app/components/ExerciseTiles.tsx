@@ -74,8 +74,11 @@ export default function ExerciseTiles(){
                     target = {item.target} 
                />
             ))}
-            <div ref={loader} className="h-10 w-full flex items-center"></div>
-            {loading? <AiOutlineLoading3Quarters className="fill-text-pri flex items-center justify-center size-10 mx-auto animate-spin"/> : null}
+            {loading? 
+            <AiOutlineLoading3Quarters 
+                className="fill-text-pri my-6 relative z-50 flex items-center justify-center size-15 mx-auto animate-spin"/>
+                 : null}
+            <div ref={loader} className="relative z-0 h-30 w-full flex items-center"></div>
             </div>
         )
 
