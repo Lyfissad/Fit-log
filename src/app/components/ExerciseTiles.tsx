@@ -13,6 +13,7 @@ export default function ExerciseTiles(){
     const loader = useRef<HTMLDivElement | null>(null)
 
     const loadingRef = useRef(false)
+    const offsetRef = useRef(0)
 
         const loadMore = async () => {
             if (loadingRef.current) return;
@@ -21,10 +22,11 @@ export default function ExerciseTiles(){
 
 
 
-            const exer = await getExercises(offset, 10)
+            const exer = await getExercises(offsetRef.current, 10)
             setExercises(prev => [...prev, ...exer])
             setOffset(prev => prev + 10);
-            
+
+            offsetRef.current += 10
             loadingRef.current = false;
             setLoading(false)
         }
