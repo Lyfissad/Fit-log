@@ -25,7 +25,7 @@ export default function ExerciseTiles(){
             const exer = await getExercises(offsetRef.current, 10)
             setExercises(prev => [...prev, ...exer])
             setOffset(prev => prev + 10);
-
+            console.log(offset)
             offsetRef.current += 10
             loadingRef.current = false;
             setLoading(false)
