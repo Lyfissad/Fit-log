@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 import ExerciseProvider from "@/context/exerciseProvider";
 import NavFooter from "./components/NavFooter";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -24,6 +26,7 @@ export default function RootLayout({
         <ExerciseProvider>
           <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
            {children}
+           <ToastContainer/>
         </div>
         <NavFooter />
         </ExerciseProvider>

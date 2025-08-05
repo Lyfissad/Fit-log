@@ -34,11 +34,14 @@ export default function Signup(){
         if(res.ok){
             toast.success("Account Created!")
             console.log(data)
+            setNewUser({
+                name: "",
+                email: "",
+                password: ""
+            });
         }else{
             toast.error("Sign up failed")
         }
-        console.log("Raw res:", res)
-        console.log("Res body:", await res.text()) // instead of res.json()
 
     }catch(err){
         console.error("Error:", err)
@@ -82,7 +85,7 @@ export default function Signup(){
                 value={newUser.password}
                 onChange={handleChange}
                 />
-            <button type="submit" className="w-[20rem] h-[3rem] rounded-lg bg-priAccent mx-auto">Sign Up</button>
+            <button type="submit" className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">Sign Up</button>
             </form>
         </div>
     )
