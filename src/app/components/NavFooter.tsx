@@ -29,7 +29,7 @@ export default function NavFooter(){
               </Link>
             </li>
             <li onClick={() => {setActiveTab("work")}} className={`px-3 min-w-18 text-xs transition-all duration-250 ${activeTab === "work"? "text-text-pri" : "text-text-sec"}`}>
-              <Link href={"/"}>
+              <Link href={"/?resize=true"}>
               <IoMdAdd className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "work"? "text-text-pri" : "text-text-sec"}`}/>
               Workouts
               </Link>

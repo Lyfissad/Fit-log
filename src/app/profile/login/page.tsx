@@ -1,9 +1,12 @@
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
+
 
 export default function Login(){
     return(
         <div className="bg-grayBlack h-screen w-full pt-5 animate-fadeIn">
+            <Image src={"/fitlog_logo.png"} alt="logo" width={180} height={80} className="mx-auto my-10"/>
             <h1 className="text-bold text-text-pri text-4xl p-8">Login</h1>
             <div className="flex gap-3 px-8">
                 <h2 className="text-text-sec">Don&apos;t have an account?</h2>
