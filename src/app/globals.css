@@ -1,14 +1,16 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme{
-  --color-grayBlack : #121212;
-  --color-cards : #1C1C1E; 
-  --color-priAccent : #0A84FF;
+  --color-grayBlack : #1E1E1E;
+  --color-cards : #2C2C2E; 
+  --color-priAccent : #4E6C3F;
   --color-secAccent : #1F1F1F;
-  --color-text-color:#66B3FF;
+  --color-text-color:#A8D889;
   --color-text-pri : #FFFFFF;
   --color-text-sec : #A1A1A1;
   --color-borders : #2E2E2E;

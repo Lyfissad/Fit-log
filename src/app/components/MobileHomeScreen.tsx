@@ -43,7 +43,7 @@ export default function MobileHome(){
           </div>
           }
        <div className={`${resize? "" : "blur-xs"}`}>
-            <Image src={"/fitlog_logo.png"} alt="logo" width={180} height={80} className="m-5"/>
+            <Image src={"/fitlog_logo_green.png"} alt="logo" width={180} height={80} className="m-5 bg-transparent"/>
             <h1 className={`font-bold text-5xl p-5 ${headings.className}`}>Workouts</h1>
             <h3 className="text-text-sec px-5 text-xl">Quick Start</h3>
             <Link 
@@ -58,7 +58,7 @@ export default function MobileHome(){
                   <HiOutlineDotsHorizontal className="size-7"/>
                 </div>
               </div>
-              <div className="h-[10rem] border-1 border-[#2C2C2E] flex justify-center text-center items-center w-1/2 m-4 rounded-2xl bg-cards">
+              <div className="h-[10rem] border-1 border-[#2C2C2E] cursor-pointer flex justify-center text-center items-center w-1/2 m-4 rounded-2xl bg-cards">
               <h2 className={`text-lg p-4 text-text-color ${secText.className}`}>Tap to add Template</h2>
               </div>
        </div>

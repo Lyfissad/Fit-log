@@ -57,11 +57,11 @@ export default function Signup(){
 
        return(
         <div className="bg-grayBlack h-screen w-full pt-5 animate-fadeIn">
-            <Image src={"/fitlog_logo.png"} alt="logo" width={180} height={80} className="mx-auto my-10"/>
+            <Image src={"/fitlog_logo_green.png"} alt="logo" width={240} height={140} className="mx-auto my-10"/>
             <h1 className="text-bold text-text-pri text-4xl p-8">Sign Up</h1>
             <div className="flex gap-3 px-8">
                 <h2 className="text-text-sec">Already have an account?</h2>
-                <Link href={"/profile/login"} className="text-priAccent transition-all duration-75 active:-translate-y-1">Login</Link>
+                <Link href={"/profile/login"} className="text-text-color transition-all duration-75 active:-translate-y-1">Login</Link>
             </div>
             <form onSubmit={handleSubmit} className="w-[20rem] mx-auto space-y-6 pt-8" >
             <Input 

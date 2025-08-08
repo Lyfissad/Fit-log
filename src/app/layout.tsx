@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Fit Log - Train. Track. Transform.",
   description: "Fitness App",
   icons:{
-    icon: "./browser_logo.PNG"
+    icon: "./browser_logo_green.PNG"
   }
 };
 
@@ -26,8 +26,8 @@ export default function RootLayout({
         <ExerciseProvider>
           <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
            {children}
-           <ToastContainer/>
         </div>
+        <ToastContainer theme="dark"/>
         <NavFooter />
         </ExerciseProvider>
       </body>
