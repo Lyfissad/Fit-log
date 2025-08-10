@@ -5,9 +5,13 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from "react-toastify"
+import { useRouter } from "next/navigation"
+import { useUser } from "@/context/userContext"
 
 
 export default function Login(){
+    const { setGlobalUser } = useUser();
+    const router = useRouter()
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -29,11 +33,27 @@ export default function Login(){
                     headers: {
                         "Content-type" : "application/json"
                     },
-                    body: JSON.stringify({user})
+                    body: JSON.stringify(user),
+                    credentials: "include"
                 }
             );
             if(response.ok){
                 toast.success("Login successful")
+                const data = await response.json()
+                setGlobalUser(data.user)
+                const profile = await fetch("https://fitlog-back-production.up.railway.app/profile", 
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                )
+                if (profile.ok){
+                    toast.success(`re-directing to profile`)
+
+                    router.push("/auth/profile")
+                }else{
+                    toast.error("Profile blocked")
+                }
             }else(
                 toast.error("Login failed")
             )
@@ -49,22 +69,24 @@ export default function Login(){
             <h1 className="text-bold text-text-pri text-4xl p-8">Login</h1>
             <div className="flex gap-3 px-8">
                 <h2 className="text-text-sec">Don&apos;t have an account?</h2>
-                <Link href={"/profile/signup"} className="text-text-color transition-all duration-75 active:-translate-y-1">Signup</Link>
+                <Link href={"/auth/signup"} className="text-text-color transition-all duration-75 active:-translate-y-1">Signup</Link>
             </div>
             <form className="w-[20rem] mx-auto space-y-6 pt-8" onSubmit={handleSubmit}>
             <Input 
             placeholder="Email" 
             value={user.email}
             name="email"
+            type="text"
             onChange={handleChange}
             />
             <Input 
             placeholder="Password"
             value={user.password}
             name="password"
+            type="password"
             onChange={handleChange}
             />
-            <button className="w-[20rem] h-[3rem] rounded-lg bg-priAccent mx-auto">Login</button>
+            <button className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">Login</button>
             </form>
         </div>
     )

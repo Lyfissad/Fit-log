@@ -61,7 +61,7 @@ export default function Signup(){
             <h1 className="text-bold text-text-pri text-4xl p-8">Sign Up</h1>
             <div className="flex gap-3 px-8">
                 <h2 className="text-text-sec">Already have an account?</h2>
-                <Link href={"/profile/login"} className="text-text-color transition-all duration-75 active:-translate-y-1">Login</Link>
+                <Link href={"/auth/login"} className="text-text-color transition-all duration-75 active:-translate-y-1">Login</Link>
             </div>
             <form onSubmit={handleSubmit} className="w-[20rem] mx-auto space-y-6 pt-8" >
             <Input 

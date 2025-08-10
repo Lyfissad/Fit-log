@@ -17,7 +17,7 @@ export default function NavFooter(){
         <footer className="fixed bottom-0 left-0 w-full z-50  ">
           <ul className="flex bg-cards border-t border-[#2C2C2E] justify-center text-sm h-[4rem]">
             <li onClick={() => {setActiveTab("profile")}} className={`px-4 min-w-18 text-s transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/profile"}>
+              <Link href={"/auth"}>
               <CgProfile className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}/>
               Profile
               </Link>
