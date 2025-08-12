@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-grayBlack text-text-pri h-screen overflow-hidden relative`}>
         <ExerciseProvider>
-          <UserProvider>
+        <UserProvider>
           <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
            {children}
         </div>

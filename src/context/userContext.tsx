@@ -4,25 +4,25 @@ import { createContext, useState, useContext, ReactNode } from "react"
 
 
 type User = {
-    id: '',
-    name: '',
-    email: ''
+    id: string,
+    email: string,
+    name: string
+    
 }
 
 
 type userContextType = {
-    user: User | null;
+    globalUser: User | null;
     setGlobalUser: (user: User) => void
 }
 const userContext = createContext<userContextType | undefined>(undefined);
 
 
 export const UserProvider = ({ children }: {children: ReactNode}) => {
-    const defaultUser: User = { id: '', name: '', email: '' };
-    const [user, setGlobalUser] = useState<User | null>(defaultUser);
+    const [globalUser, setGlobalUser] = useState<User | null>(null);
 
     return(
-        <userContext.Provider value = {{user, setGlobalUser}}>
+        <userContext.Provider value = {{globalUser, setGlobalUser}}>
             {children}
         </userContext.Provider>
     )   

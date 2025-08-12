@@ -5,12 +5,19 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { ChangeEvent, useState } from "react"
 import { toast } from "react-toastify"
+import { BiSolidShow } from "react-icons/bi";
+import { BiSolidHide } from "react-icons/bi";
+import { useRouter } from "next/navigation"
+
 
 export default function Signup(){
+    const router = useRouter()
+    const [showIcon, setShowIcon] = useState(true)
     const [newUser, setNewUser] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        cPassword: ""
     })
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +44,12 @@ export default function Signup(){
             setNewUser({
                 name: "",
                 email: "",
-                password: ""
+                password: "",
+                cPassword: ""
             });
+            router.push("/auth/login")
         }else{
-            toast.error("Sign up failed")
+            toast.error("Sign up failed passwords don't match")
         }
 
     }catch(err){
@@ -50,12 +59,14 @@ export default function Signup(){
 }
 
 
+        function switchShow(){
+            setShowIcon(!showIcon)
+        }
 
 
 
-
-
-       return(
+        const showType = showIcon? "password" : "text"
+        return(
         <div className="bg-grayBlack h-screen w-full pt-5 animate-fadeIn">
             <Image src={"/fitlog_logo_green.png"} alt="logo" width={240} height={140} className="mx-auto my-10"/>
             <h1 className="text-bold text-text-pri text-4xl p-8">Sign Up</h1>
@@ -78,11 +89,23 @@ export default function Signup(){
                 value={newUser.email}
                 onChange={handleChange}
                 />
+            <div className="flex">
             <Input 
                 placeholder="Password"
                 name="password"
-                type="password"
+                type={showType}
                 value={newUser.password}
+                onChange={handleChange}
+                />
+                {showIcon?
+                 <BiSolidShow onClick={switchShow} className="absolute right-10 fill-text-color cursor-pointer size-5 mt-2"/> : 
+                 <BiSolidHide onClick={switchShow} className="absolute right-10 fill-text-color cursor-pointer size-5 mt-2"/>}  
+            </div>
+            <Input 
+                placeholder="Confirm Password"
+                name="cPassword"
+                type={showType}
+                value={newUser.cPassword}
                 onChange={handleChange}
                 />
             <button type="submit" className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">Sign Up</button>

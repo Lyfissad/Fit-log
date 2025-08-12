@@ -3,14 +3,16 @@
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import { useRouter } from "next/navigation"
 import { useUser } from "@/context/userContext"
-
+import { BiSolidShow } from "react-icons/bi";
+import { BiSolidHide } from "react-icons/bi";
 
 export default function Login(){
-    const { setGlobalUser } = useUser();
+    const { globalUser, setGlobalUser } = useUser()
+    const [showIcon, setShowIcon] = useState(true)
     const router = useRouter()
     const [user, setUser] = useState({
         email: "",
@@ -39,16 +41,21 @@ export default function Login(){
             );
             if(response.ok){
                 toast.success("Login successful")
-                const data = await response.json()
-                setGlobalUser(data.user)
-                const profile = await fetch("https://fitlog-back-production.up.railway.app/profile", 
+                const profile = await fetch("https://fitlog-back-production.up.railway.app/profile", //once login succesful a secondary request made to protected route of profile
                     {
                         method: "GET",
-                        credentials: "include"
+                        credentials: "include",
+                        headers:{
+                            "Cache-Control": "no-cache"
+                        }
                     }
                 )
                 if (profile.ok){
-                    toast.success(`re-directing to profile`)
+                    const profileData = await profile.json()
+
+                    setGlobalUser(profileData.user)
+
+                    localStorage.setItem("user" , JSON.stringify(profileData.user))
 
                     router.push("/auth/profile")
                 }else{
@@ -62,7 +69,15 @@ export default function Login(){
         }
 
     }
-
+    useEffect(() => {
+        if(globalUser){
+            console.log(globalUser)
+        }
+    },[globalUser])
+    function switchShow(){
+            setShowIcon(!showIcon)
+        }
+        const showType = showIcon? "password" : "text" //control password display state used in input type
     return(
         <div className="bg-grayBlack h-screen w-full pt-5 animate-fadeIn">
             <Image src={"/fitlog_logo_green.png"} alt="logo" width={240} height={140} className="mx-auto my-10"/>
@@ -83,9 +98,12 @@ export default function Login(){
             placeholder="Password"
             value={user.password}
             name="password"
-            type="password"
+            type={showType}
             onChange={handleChange}
             />
+            {showIcon?
+                             <BiSolidShow onClick={switchShow} className="absolute cursor-pointer fill-text-color right-10 size-5 top-99"/> : 
+                             <BiSolidHide onClick={switchShow} className="absolute cursor-pointer fill-text-color right-10 size-5 top-99"/>} 
             <button className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">Login</button>
             </form>
         </div>
