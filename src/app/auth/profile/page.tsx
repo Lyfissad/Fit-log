@@ -20,10 +20,12 @@ export default function Profile(){
     }
     return(
         <div className="bg-grayBlack h-screen w-full pt-5 text-text-pri">
-            <Image src={"/fitlog_logo_green.png"} alt="logo" width={180} height={80} className="m-5 bg-transparent"/>
+            <div className="flex">
+                <Image src={"/fitlog_logo_green.png"} alt="logo" width={180} height={80} className="m-5 bg-transparent"/>
+                <button onClick={logOut} className={`relative bg-priAccent cursor-pointer left-3 bottom-4 w-[25%] text-xl rounded-xl mx-auto mt-8 text-center text-text-pri border-2 border-borders ${headings.className}`}>Log Out</button>
+            </div>
             <h1 className={`font-bold text-4xl p-5 ${secText.className}`}>Hi, {globalUser.name}</h1>
             <h3 className={`text-text-sec px-5 text-xl ${secText.className}`}>Quick Start</h3>
-            <button onClick={logOut} className={`relative left-8 bg-priAccent cursor-pointer top-110 py-[0.5rem] w-[40%] text-xl rounded-md mx-auto mt-8 text-center text-text-pri border-2 border-borders ${headings.className}`}>Log Out</button>
             </div>
     )
 }

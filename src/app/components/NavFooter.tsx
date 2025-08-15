@@ -16,36 +16,81 @@ export default function NavFooter(){
     return(
         <footer className="fixed bottom-0 left-0 w-full z-50  ">
           <ul className="flex bg-cards border-t border-[#2C2C2E] justify-center text-sm h-[4rem]">
-            <li onClick={() => {setActiveTab("profile")}} className={`px-4 min-w-18 text-s transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/auth"}>
-              <CgProfile className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}/>
-              Profile
-              </Link>
-            </li>
-            <li onClick={() => {setActiveTab("history")}} className={`px-3 min-w-18 text-center text-s transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/history"}>
-              <FaHistory className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}/>
+
+            <Link href={"/auth"}>
+              <li 
+              onClick={() => {setActiveTab("profile")}} 
+              className={`px-4 min-w-18 text-s transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}
+              >
+
+                <CgProfile className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}
+                />
+                Profile
+
+                </li>
+            
+            </Link>
+
+            <Link href={"/history"}>
+
+            <li 
+            onClick={() => {setActiveTab("history")}} 
+            className={`px-3 min-w-18 text-center text-s transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}
+            >
+              
+              <FaHistory 
+              className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}
+              />
               History
+
+              </li>
+              
               </Link>
-            </li>
-            <li onClick={() => {setActiveTab("work")}} className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/?resize=true"}>
-              <IoMdAdd className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}/>
+            
+            <Link href={"/?resize=true"}>
+            
+            <li 
+            onClick={() => {setActiveTab("work")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}
+            >
+              <IoMdAdd 
+              className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}
+              />
               Workouts
+              </li>
+
               </Link>
-            </li>
-            <li onClick={() => {setActiveTab("exercise")}} className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/excercises"}>
-              <FaDumbbell className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}/>
+
+            <Link href={"/excercises"}>
+
+            <li 
+            onClick={() => {setActiveTab("exercise")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}>
+              <FaDumbbell className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}
+              
+              />
               Exercises
+              
+              </li>
+             
               </Link>
-            </li>
-            <li onClick={() => {setActiveTab("measure")}} className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}>
-              <Link href={"/measure"}>
-              <TbRuler2 className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}/ >
+            
+            <Link href={"/measure"}>
+            <li 
+            onClick={() => {setActiveTab("measure")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}
+            
+            >
+              
+              <TbRuler2 className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}
+              
+              />
+              
               Measure
-              </Link>
+            
             </li>
+            
+            </Link>
           </ul>
         </footer>
     )

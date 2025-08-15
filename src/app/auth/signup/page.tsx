@@ -8,10 +8,11 @@ import { toast } from "react-toastify"
 import { BiSolidShow } from "react-icons/bi";
 import { BiSolidHide } from "react-icons/bi";
 import { useRouter } from "next/navigation"
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Signup(){
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
     const [showIcon, setShowIcon] = useState(true)
     const [newUser, setNewUser] = useState({
         name: "",
@@ -26,7 +27,7 @@ export default function Signup(){
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        setLoading(true)
 
         try{
             const res = await fetch("https://fitlog-back-production.up.railway.app/signup",
@@ -40,6 +41,7 @@ export default function Signup(){
 
         if(res.ok){
             toast.success("Account Created!")
+            setLoading(false)
             console.log(data)
             setNewUser({
                 name: "",
@@ -66,6 +68,8 @@ export default function Signup(){
 
 
         const showType = showIcon? "password" : "text"
+        const buttonState = loading? <AiOutlineLoading3Quarters 
+                className="fill-text-pri relative z-50 items-center justify-center size-5 mx-auto animate-spin"/> : "Sign Up"
         return(
         <div className="bg-grayBlack h-screen w-full pt-5 animate-fadeIn">
             <Image src={"/fitlog_logo_green.png"} alt="logo" width={240} height={140} className="mx-auto my-10"/>
@@ -108,7 +112,7 @@ export default function Signup(){
                 value={newUser.cPassword}
                 onChange={handleChange}
                 />
-            <button type="submit" className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">Sign Up</button>
+            <button type="submit" className="w-[20rem] h-[3rem] cursor-pointer rounded-lg bg-priAccent mx-auto">{buttonState}</button>
             </form>
         </div>
     )

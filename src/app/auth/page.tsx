@@ -14,13 +14,23 @@ export default function Auth(){
     const { setGlobalUser } = useUser()
         useEffect(() => {
             const loggedIn = localStorage.getItem("user")
+            const sessionLoggedIn = sessionStorage.getItem("user")
+            if(sessionLoggedIn){
+                try{
+                    setUserLoading(true)
+                    setGlobalUser(JSON.parse(sessionLoggedIn))
+                    router.push("/auth/profile")
+                }catch(err){
+                    console.error("sessionStorage issue for user profile", err)
+                }
+            }
             if (loggedIn){
             try{
                 setUserLoading(true)
                 setGlobalUser(JSON.parse(loggedIn))
                 router.push("/auth/profile")
             }catch(err){
-                console.error("localstorage issue for user profile", err)
+                console.error("localStorage issue for user profile", err)
     
             }
         }
@@ -33,7 +43,7 @@ export default function Auth(){
                             />
             </div> : 
             
-            <div className="bg-grayBlack h-screen w-full pt-5 text-text-pri">
+            <div className="bg-grayBlack h-screen animate-fadeIn w-full pt-5 text-text-pri">
             <Image src={"/fitlog_logo_green.png"} alt="logo" width={250} height={160} className="mx-auto my-10"/>
             <div className="flex items-center justify-center h-8/12">
                 <Link href={"/auth/login"}>

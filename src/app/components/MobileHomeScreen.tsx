@@ -42,7 +42,7 @@ export default function MobileHome(){
           </div>
           </div>
           }
-       <div className={`${resize? "" : "blur-xs"}`}>
+       <div className={`${resize? "animate-fadeIn" : "blur-xs"}`}>
             <Image src={"/fitlog_logo_green.png"} alt="logo" width={180} height={80} className="m-5 bg-transparent"/>
             <h1 className={`font-bold text-5xl p-5 ${headings.className}`}>Workouts</h1>
             <h3 className="text-text-sec px-5 text-xl">Quick Start</h3>
