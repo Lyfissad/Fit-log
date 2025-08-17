@@ -13,6 +13,7 @@ export default function Profile(){
     const { globalUser } = useUser()
     function logOut(){
         localStorage.clear()
+        sessionStorage.clear()
         router.push("/auth")
     }
     if (!globalUser){
