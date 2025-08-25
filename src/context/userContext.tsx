@@ -13,7 +13,7 @@ type User = {
 
 type userContextType = {
     globalUser: User | null;
-    setGlobalUser: (user: User) => void
+    setGlobalUser: (user: User | null) => void
 }
 const userContext = createContext<userContextType | undefined>(undefined);
 

@@ -5,6 +5,7 @@ import ExerciseProvider from "@/context/exerciseProvider";
 import NavFooter from "./components/NavFooter";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "@/context/userContext";
+import { NavProvider } from "@/context/NavContext";
 
 
 export const metadata: Metadata = {
@@ -25,11 +26,13 @@ export default function RootLayout({
       <body className={`bg-grayBlack text-text-pri h-screen overflow-hidden relative`}>
         <ExerciseProvider>
         <UserProvider>
+        <NavProvider>
           <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
            {children}
         </div>
         <ToastContainer theme="dark"/>
         <NavFooter />
+        </NavProvider>
         </UserProvider>
         </ExerciseProvider>
       </body>

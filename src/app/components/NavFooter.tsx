@@ -5,13 +5,11 @@ import { IoMdAdd } from "react-icons/io";
 import { FaDumbbell } from "react-icons/fa";
 import { TbRuler2 } from "react-icons/tb";
 import Link from "next/link"
-import { useState } from "react";
-
+import { useNav } from "@/context/NavContext";
 
 
 export default function NavFooter(){
-    const [activeTab, setActiveTab] = useState("work")
-
+    const { globalNav, setGlobalNav } = useNav()
 
     return(
         <footer className="fixed bottom-0 left-0 w-full z-50  ">
@@ -19,11 +17,11 @@ export default function NavFooter(){
 
             <Link href={"/auth"}>
               <li 
-              onClick={() => {setActiveTab("profile")}} 
-              className={`px-4 min-w-18 text-s transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}
+              onClick={() => {setGlobalNav("profile")}} 
+              className={`px-4 min-w-18 text-s transition-all duration-250 ${globalNav === "profile"? "text-text-color" : "text-text-sec"}`}
               >
 
-                <CgProfile className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "profile"? "text-text-color" : "text-text-sec"}`}
+                <CgProfile className={`size-7 mx-auto my-1 transition-all duration-250 ${globalNav === "profile"? "text-text-color" : "text-text-sec"}`}
                 />
                 Profile
 
@@ -34,12 +32,12 @@ export default function NavFooter(){
             <Link href={"/history"}>
 
             <li 
-            onClick={() => {setActiveTab("history")}} 
-            className={`px-3 min-w-18 text-center text-s transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}
+            onClick={() => {setGlobalNav("history")}} 
+            className={`px-3 min-w-18 text-center text-s transition-all duration-250 ${globalNav === "history"? "text-text-color" : "text-text-sec"}`}
             >
               
               <FaHistory 
-              className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "history"? "text-text-color" : "text-text-sec"}`}
+              className={`size-7 mx-auto my-1 transition-all duration-250 ${globalNav === "history"? "text-text-color" : "text-text-sec"}`}
               />
               History
 
@@ -50,11 +48,11 @@ export default function NavFooter(){
             <Link href={"/?resize=true"}>
             
             <li 
-            onClick={() => {setActiveTab("work")}} 
-            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}
+            onClick={() => {setGlobalNav("work")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${globalNav === "work"? "text-text-color" : "text-text-sec"}`}
             >
               <IoMdAdd 
-              className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "work"? "text-text-color" : "text-text-sec"}`}
+              className={`size-7 mx-auto my-1 transition-all duration-250 ${globalNav === "work"? "text-text-color" : "text-text-sec"}`}
               />
               Workouts
               </li>
@@ -64,9 +62,9 @@ export default function NavFooter(){
             <Link href={"/excercises"}>
 
             <li 
-            onClick={() => {setActiveTab("exercise")}} 
-            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}>
-              <FaDumbbell className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "exercise"? "text-text-color" : "text-text-sec"}`}
+            onClick={() => {setGlobalNav("exercise")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${globalNav === "exercise"? "text-text-color" : "text-text-sec"}`}>
+              <FaDumbbell className={`size-7 mx-auto my-1 transition-all duration-250 ${globalNav === "exercise"? "text-text-color" : "text-text-sec"}`}
               
               />
               Exercises
@@ -77,12 +75,12 @@ export default function NavFooter(){
             
             <Link href={"/measure"}>
             <li 
-            onClick={() => {setActiveTab("measure")}} 
-            className={`px-3 min-w-18 text-s transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}
+            onClick={() => {setGlobalNav("measure")}} 
+            className={`px-3 min-w-18 text-s transition-all duration-250 ${globalNav === "measure"? "text-text-color" : "text-text-sec"}`}
             
             >
               
-              <TbRuler2 className={`size-7 mx-auto my-1 transition-all duration-250 ${activeTab === "measure"? "text-text-color" : "text-text-sec"}`}
+              <TbRuler2 className={`size-7 mx-auto my-1 transition-all duration-250 ${globalNav === "measure"? "text-text-color" : "text-text-sec"}`}
               
               />
               
@@ -94,4 +92,5 @@ export default function NavFooter(){
           </ul>
         </footer>
     )
-}
+  }
+

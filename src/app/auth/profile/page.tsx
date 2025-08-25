@@ -10,14 +10,16 @@ import { useRouter } from "next/navigation"
 
 export default function Profile(){
     const router = useRouter()
-    const { globalUser } = useUser()
+    const { globalUser, setGlobalUser } = useUser()
+
     function logOut(){
         localStorage.clear()
         sessionStorage.clear()
+        setGlobalUser(null)
         router.push("/auth")
     }
     if (!globalUser){
-        return <h1>Loading...</h1>
+        return <h1>There was an error please refresh</h1>
     }
     return(
         <div className="bg-grayBlack h-screen w-full pt-5 text-text-pri">

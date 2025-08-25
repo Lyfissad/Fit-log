@@ -63,7 +63,6 @@ export default function Login(){
                 setLoading(false)
                 if (profile.ok){
                     const profileData = await profile.json()
-
                     setGlobalUser(profileData.user)
                     if(remember){
                         localStorage.setItem("user" , JSON.stringify(profileData.user))
