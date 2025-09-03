@@ -33,7 +33,7 @@ export default function MobileHome(){
       <div>
          {resize? null : 
          <div className="fixed inset-0 flex items-center justify-center bg-opacity-60 z-50">
-         <div className={`z-50 bg-cards w-[24rem] h-55 border-2 border-grayBlack rounded-lg text-md justify-center text-center top-74 ${secText.className}`}>
+         <div className={`z-50 bg-cards w-[24rem] h-55 border-2 border-grayBlack rounded-lg p-8 text-md justify-center text-center top-74 ${secText.className}`}>
               <h2>This app is an MVP and designed for smartphones. Please resize your window by clicking the button below.</h2>
               <button className={`bg-priAccent w-[15rem] h-[3rem] mt-5 text-lg rounded-md cursor-pointer text-text-pri ${headings.className}`} onClick={() => {
                 openMobileView()

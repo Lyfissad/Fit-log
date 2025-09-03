@@ -15,3 +15,10 @@ export const secText = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
+
+
+export const secTextBold = Poppins({
+  weight: '600',
+  subsets: ['latin'],
+  display: 'swap',
+});

@@ -6,7 +6,7 @@ import { secText } from "@/lib/font"
 import { useUser } from "@/context/userContext"
 import { headings } from "@/lib/font"
 import { useRouter } from "next/navigation"
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Profile(){
     const router = useRouter()
@@ -19,7 +19,11 @@ export default function Profile(){
         router.push("/auth")
     }
     if (!globalUser){
-        return <h1>There was an error please refresh</h1>
+        return(
+            <div className="flex items-center justify-center h-8/12">
+                <AiOutlineLoading3Quarters className="fill-text-color relative z-50 items-center justify-center size-15 mx-auto animate-spin"/>
+            </div>
+        )
     }
     return(
         <div className="bg-grayBlack h-screen w-full pt-5 text-text-pri">
