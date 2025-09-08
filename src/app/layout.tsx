@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import ExerciseProvider from "@/context/exerciseProvider";
 import NavFooter from "./components/NavFooter";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "@/context/userContext";
 import { NavProvider } from "@/context/NavContext";
 
-
 export const metadata: Metadata = {
   title: "Fit Log - Train. Track. Transform.",
   description: "Fitness App",
-  icons:{
-    icon: "./browser_logo_green.PNG"
-  }
+  icons: {
+    icon: "/browser_logo_green.PNG",
+  },
 };
 
 export default function RootLayout({
@@ -23,21 +22,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-grayBlack text-text-pri h-screen overflow-hidden relative`}>
+      <body
+        className={`bg-grayBlack text-text-pri h-screen overflow-hidden relative`}
+      >
         <ExerciseProvider>
-        <UserProvider>
-        <NavProvider>
-          <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
-           {children}
-        </div>
-        <ToastContainer theme="dark"/>
-        <NavFooter />
-        </NavProvider>
-        </UserProvider>
+          <UserProvider>
+            <NavProvider>
+              <div className="absolute inset-0 overflow-y-auto pb-[4.5rem]">
+                {children}
+              </div>
+              <ToastContainer theme="dark" />
+              <NavFooter />
+            </NavProvider>
+          </UserProvider>
         </ExerciseProvider>
       </body>
     </html>
   );
 }
-
-
