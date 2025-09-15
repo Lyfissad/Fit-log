@@ -143,20 +143,19 @@ export default function Measure() {
             </DrawerTrigger>
             </div>
             <DrawerHeader>
-              <DrawerContent className="bg-grayBlack gap-y-4 border-t-grayBlack [&>div:first-child]:bg-text-color">
-                <DrawerClose>
-                  <button className="flex bg-priAccent ml-85 items-center justify-center size-8 rounded-3xl cursor-pointer" >
+              <div className="overflow-y-auto">
+                <DrawerContent className="bg-grayBlack h-[80dvh] gap-y-4 border-t-grayBlack [&>div:first-child]:bg-text-color">
+                <DrawerClose className="flex bg-priAccent ml-85 items-center justify-center size-8 rounded-3xl cursor-pointer" >
                     <IoMdClose className="size-7"/>
-                  </button>
                 </DrawerClose>
                 <DrawerTitle className={`${secTextBold.className} ml-2 text-lg text-text-color`}>Add New Entry</DrawerTitle>
                 <div className="">
                     <h3 className={`ml-3 mb-3 ${secText.className} text-text-pri `}>Type</h3>
-                    <Select value={newEntry.type} onValueChange={(val) => setNewEntry({ ...newEntry, type: val })}>
-                      <SelectTrigger className="w-full">
+                    <Select value={newEntry.type} onValueChange={(val) => setNewEntry({ ...newEntry, type: val, unit: "" })}>
+                      <SelectTrigger className="w-[95%] mx-auto">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
-                      <SelectContent className={`w-full bg-grayBlack text-text-pri ${secText.className}`}>
+                      <SelectContent className={`w-full mx-auto bg-grayBlack text-text-pri ${secText.className}`}>
                         <SelectItem className="hover:bg-priAccent focus:bg-text-color" value="weight">Weight</SelectItem>
                         <SelectItem className="hover:bg-priAccent focus:bg-text-color" value="waist">Waist</SelectItem>
                         <SelectItem className="hover:bg-priAccent focus:bg-text-color" value="body_fat">Body Fat %</SelectItem>
@@ -164,7 +163,7 @@ export default function Measure() {
                     </Select>
                     <h3 className={`ml-3 my-3 ${secText.className} text-text-pri `}>Unit</h3>
                     <Select value={newEntry.unit} onValueChange={(val) => setNewEntry({ ...newEntry, unit: val })}>
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className="w-[95%] mx-auto">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent className={`w-full bg-grayBlack text-text-pri ${secText.className}`}>
@@ -172,22 +171,23 @@ export default function Measure() {
                         {unitOps[1]? <SelectItem className="hover:bg-priAccent focus:bg-text-color" value={unitOps[1]}>{unitOps[1]}</SelectItem> : null}
                       </SelectContent>
                     </Select>
-                    <h3 className={`ml-3 my-3 ${secText.className} text-text-pri `}>value</h3>
+                    <h3 className={`ml-3 my-8 ${secText.className} text-text-pri `}>value</h3>
+                    <div className="flex bg-priAccent w-12 my-5 py-2 rounded-xl items-center justify-center mx-auto">
+                        <h3 className={`text-text-pri  ${secText.className}`}>{newEntry.value}</h3>
+                    </div>
                     <Slider
-                        className="w-[98%] mx-auto"
+                        className="w-[95%] my-15 mx-auto"
                         defaultValue={[0]}
                         onValueChange={(val) => setNewEntry({...newEntry, value: val})}
                         min={findRange()[0]}
                         max={findRange()[1]}
                         step={0.1}
                       />
-                      <div className="flex bg-priAccent w-12 my-5 py-2 rounded-xl items-center justify-center mx-auto">
-                        <h3 className={`text-text-pri  ${secText.className}`}>{newEntry.value}</h3>
-                      </div>
                     <h3 className={`ml-3 my-3 ${secText.className} text-text-pri `}>Note</h3>
-                    <textarea value={newEntry.note} className={`w-[95%] border-1 mx-2 border-text-sec rounded-xs ${secText.className}`} placeholder="Add a note" onChange={(e) => setNewEntry({...newEntry, note: e.target.value})}></textarea>
+                    <textarea value={newEntry.note} className={`w-[95%] p-2 border-1 mx-2 border-text-sec rounded-xs ${secText.className}`} placeholder="Add a note" onChange={(e) => setNewEntry({...newEntry, note: e.target.value})}></textarea>
                   </div>
               </DrawerContent>
+              </div>
             </DrawerHeader>
           </Drawer>
         </div>
