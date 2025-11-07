@@ -32,7 +32,7 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await fetch(
-        "https://fitlog-back-production.up.railway.app/login",
+        "https://fitlog-back-1.onrender.com/login",
         {
           method: "POST",
           headers: {

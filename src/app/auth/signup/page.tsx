@@ -31,7 +31,7 @@ export default function Signup() {
 
     try {
       const res = await fetch(
-        "https://fitlog-back-production.up.railway.app/signup",
+        "https://fitlog-back-1.onrender.com/signup",
         {
           method: "POST",
           headers: {
