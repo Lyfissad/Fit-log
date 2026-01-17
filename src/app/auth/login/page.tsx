@@ -32,7 +32,7 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await fetch(
-        "https://fitlog-back-1.onrender.com/login",
+        "https://fitlog-back-1.onrender.com/routes/login",
         {
           method: "POST",
           headers: {
@@ -45,7 +45,7 @@ export default function Login() {
       if (response.ok) {
         toast.success("Login successful");
         const profile = await fetch(
-          "https://fitlog-back-production.up.railway.app/profile", //once login succesful a secondary request made to protected route of profile
+          "https://fitlog-back-1.onrender.com/profile", //once login succesful a secondary request made to protected route of profile
           {
             method: "GET",
             credentials: "include",
